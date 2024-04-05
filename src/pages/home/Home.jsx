@@ -4,7 +4,6 @@ import { Calendar } from 'primereact/calendar';
 import { InputText } from 'primereact/inputtext';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
-import { Toolbar } from 'primereact/toolbar';
 
 import './home.style.css'
 import axios from 'axios';
@@ -13,6 +12,10 @@ import { format } from '@formkit/tempo';
 import { Button } from 'primereact/button';
 import { PDFDownloadLink } from '@react-pdf/renderer';
 import PdfDoc from '../../components/PdfDoc';
+
+import * as Primes from "primereact/button";
+const { Button,Calendar,InputText,DataTable,Column } = Primes;
+export { Button,Calendar,InputText,DataTable,Column };
 
 const Home = () => {
 
