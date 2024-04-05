@@ -14,8 +14,8 @@ import { PDFDownloadLink } from '@react-pdf/renderer';
 import PdfDoc from '../../components/PdfDoc';
 
 import * as Primes from "primereact/button";
-const { Button,Calendar,InputText,DataTable,Column } = Primes;
-export { Button,Calendar,InputText,DataTable,Column };
+const { Button, Calendar, InputText, DataTable, Column, Card } = Primes;
+export { Button, Calendar, InputText, DataTable, Column, Card };
 
 const Home = () => {
 
@@ -121,7 +121,7 @@ const Home = () => {
             {/* create an icobutton that allows to download a pdf with this data */}
 
             <div className='headerField'>
-              <PDFDownloadLink document={<PdfDoc reservas={reservas} date={date} />} fileName={`reservas_${format(date,'DD-MM-YYYY')}.pdf`} >
+              <PDFDownloadLink document={<PdfDoc reservas={reservas} date={date} />} fileName={`reservas_${format(date, 'DD-MM-YYYY')}.pdf`} >
                 {({ blob, url, loading, error }) => (loading ?
                   'Loading document...' : <Button label='Descargar PDF' className='p-button-raised p-button-text'
                     icon="pi pi-download"
