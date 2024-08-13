@@ -1,4 +1,4 @@
-export const API_URL = process.env.API_URL
+export const API_URL = 'https://safaera-api-production.up.railway.app/api/v1/'
 export const safaera = 'jwt '+  process.env.SAFAERA_TOKEN
 
 export const API = {

@@ -35,6 +35,7 @@ const Home = () => {
   }
 
   const getReservas = (date) => {
+    console.log(API.reservas.getReservas)
     axios.request({
       ...API.reservas.getReservas,
       params: {
