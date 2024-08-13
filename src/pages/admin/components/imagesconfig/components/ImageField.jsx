@@ -9,10 +9,9 @@ const ImageField = ({ image, setImages }) => {
     const [newImage, setNewImage] = useState(image)
 
     const formatImageUrl = (url) => {
-        const newUrl = url.replace(
-            "https://drive.usercontent.google.com/download?id=",
-            "https://lh3.googleusercontent.com/d/",
-        );
+        // extract de id from the url
+        const id = url.split("/")[5]
+        const newUrl = `https://lh3.googleusercontent.com/d/${id}`
         return newUrl
     }
 
@@ -40,7 +39,10 @@ const ImageField = ({ image, setImages }) => {
                 border: '1px solid black'
             }}
         >
-            <Image src={imageUrl} alt="Image" width="250" />
+            {/* <Image src={imageUrl} alt="Image" height='200' /> */}
+            <img src={imageUrl} alt=""
+                style={{ width: '100%', height: '200px', objectFit: 'cover' }}
+            />
             <InputText placeholder='URL de la imagen'
                 style={{ width: '100%', marginTop: '10px' }}
                 value={newImage}

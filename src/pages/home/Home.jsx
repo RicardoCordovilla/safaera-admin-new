@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import { jwtDecode } from "jwt-decode";
+import { useEffect, useState } from 'react'
 import { Card } from 'primereact/card';
 import { Calendar } from 'primereact/calendar';
 import { InputText } from 'primereact/inputtext';
@@ -8,10 +9,11 @@ import { Button } from 'primereact/button';
 
 import './home.style.css'
 import axios from 'axios';
-import { API, safaera } from '../../utils/config';
+import { API } from '../../utils/config';
 import { format } from '@formkit/tempo';
 import { PDFDownloadLink } from '@react-pdf/renderer';
 import PdfDoc from '../../components/PdfDoc';
+
 
 
 
@@ -38,14 +40,20 @@ const Home = () => {
       params: {
         fecha: date
       },
-      headers: {
-        'Authorization': safaera
-      }
+      headers: API.reservas.getReservas.headers
     })
       .then(res => {
         console.log(res)
-        setReservas(res.data)
-        setFilteredReservas(res.data)
+        const response = res.data.map(reserva => {
+          return {
+            ...reserva,
+            cedula: reserva.cedula.length > 50 ? jwtDecode(reserva.cedula).cel : reserva.cedula,
+            celular: reserva.celular.length > 50 ? jwtDecode(reserva.celular).cel : reserva.celular,
+          }
+        }
+        )
+        setReservas(response)
+        setFilteredReservas(response)
       })
       .catch(err => {
         console.log(err)

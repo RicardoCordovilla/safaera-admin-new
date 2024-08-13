@@ -1,7 +1,5 @@
-// export const API_URL = "http://localhost:9000/api/v1/"
-export const API_URL = "https://safaera-api-production.up.railway.app/api/v1/"
-
-export const safaera = 'jwt eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjJiYWVlZWQ0LWI4YmQtNDJhZS05OWJmLWI4MDFhOWQ5Yzk1MCIsImVtYWlsIjoicmljYXJkbzFAc2FmYWVyYS5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2NzM5MTg1NTl9.01CTjN5YezqlWdWTIUejYrnubmpmaIk1s3zQjSBQfAw'
+export const API_URL = process.env.API_URL
+export const safaera = 'jwt '+  process.env.SAFAERA_TOKEN
 
 export const API = {
     configs: {
@@ -21,7 +19,10 @@ export const API = {
         },
         getReservas: {
             method: "GET",
-            url: API_URL + "reservas?fecha="
+            url: API_URL + "reservas?fecha=",
+            headers: {
+                Authorization: safaera
+            }
         },
     }
 }
